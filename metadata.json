@@ -1,0 +1,8 @@
+{
+  "name": "CheckThis.co - AI-Powered Health & Smart Shopping",
+  "description": "A category-defining AI engine for healthier and smarter shopping. Unlike static scanners, CheckThis provides context-aware health scores, real alternatives, and price intelligence globally.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
