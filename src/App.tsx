@@ -143,7 +143,6 @@ const App: React.FC = () => {
       }
   };
 
-  // Fix: Added handleAddToBasket to resolve reference error
   const handleAddToBasket = (offer: StoreOffer, productName: string) => {
     const newItem: BasketItem = {
       id: Math.random().toString(36).substr(2, 9),
@@ -155,7 +154,6 @@ const App: React.FC = () => {
     setIsBasketOpen(true);
   };
 
-  // Fix: Added handleSelectMatch to resolve reference error
   const handleSelectMatch = (match: SearchMatch) => {
     handleAnalyze(`${match.brand} ${match.name}`, undefined, 'product');
   };
@@ -164,7 +162,15 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 relative">
-      <Navbar lang={lang} setLang={setLang} basketCount={basket.length} onOpenBasket={() => setIsBasketOpen(true)} onNavigate={handleNavigate} currentView={currentView} />
+      <Navbar 
+        lang={lang} 
+        setLang={setLang} 
+        basketCount={basket.length} 
+        onOpenBasket={() => setIsBasketOpen(true)} 
+        onNavigate={handleNavigate} 
+        currentView={currentView}
+        onLogin={() => setIsOnboardingModalOpen(true)}
+      />
       
       <main className="pb-32 md:pb-0">
         {currentView === 'home' ? (

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Globe, ShieldCheck, BookOpen, ShoppingBasket, Menu, X } from 'lucide-react';
+import { Globe, ShieldCheck, BookOpen, ShoppingBasket, Menu, X, LogIn } from 'lucide-react';
 import { translations } from '../translations';
 
 interface NavbarProps {
@@ -10,6 +10,7 @@ interface NavbarProps {
   onOpenBasket: () => void;
   onNavigate: (view: 'home' | 'blog') => void;
   currentView: 'home' | 'blog';
+  onLogin: () => void;
 }
 
 const Logo = ({ onClick }: { onClick: () => void }) => (
@@ -38,7 +39,7 @@ const Logo = ({ onClick }: { onClick: () => void }) => (
   </div>
 );
 
-const Navbar: React.FC<NavbarProps> = ({ lang, setLang, basketCount, onOpenBasket, onNavigate, currentView }) => {
+const Navbar: React.FC<NavbarProps> = ({ lang, setLang, basketCount, onOpenBasket, onNavigate, currentView, onLogin }) => {
   const t = translations[lang].nav;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -128,6 +129,12 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, basketCount, onOpenBaske
               <ShieldCheck className="w-4 h-4" /> Ethics
             </button>
             <button onClick={() => handleNavClick('pricing')} className="w-full text-left py-3 px-4 rounded-xl hover:bg-slate-50 text-sm font-bold text-slate-700 uppercase tracking-widest">{t.pricing}</button>
+            
+            <div className="h-px bg-slate-100 my-2"></div>
+            
+            <button onClick={() => { setIsMobileMenuOpen(false); onLogin(); }} className="w-full text-left py-3 px-4 rounded-xl hover:bg-emerald-50 text-sm font-bold text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+              <LogIn className="w-4 h-4" /> {t.signIn}
+            </button>
           </div>
         </div>
       )}
